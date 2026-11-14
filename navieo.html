@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Navieo Performance Marketing Case Study | Social Santa</title>
+    <link rel="icon" type="image/png" href="assets/images/ss-shape.webp">
     <meta name="description"
         content="How Social Santa ran a 90-day Meta campaign for Navieo: 1.5M reach, 4.54x ROAS and a growing nightlife community.">
     <link rel="canonical" href="https://socialsanta.in/navieo.html">
@@ -450,6 +451,33 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* ==============================
+           HERO IMAGE RUNS BEHIND THE NAV BAR
+        ============================== */
+        body[data-page="navieo"] .site-header {
+            margin-bottom: calc(-1 * var(--hdr-h, 6rem));
+        }
+
+        body[data-page="navieo"] .navieo-hero {
+            min-height: 100svh;
+            padding-top: 7rem;
+        }
+
+        body[data-page="navieo"] .navieo-hero-inner {
+            min-height: calc(100svh - 11rem);
+        }
+
+        @media (max-width: 768px) {
+            body[data-page="navieo"] .navieo-hero {
+                min-height: 100svh;
+                padding-top: 6.5rem;
+            }
+
+            body[data-page="navieo"] .navieo-hero-inner {
+                min-height: calc(100svh - 10rem);
+            }
+        }
     </style>
 </head>
 
@@ -499,7 +527,7 @@
 
         <main>
             <!-- HERO -->
-            <section class="navieo-hero">
+            <section class="navieo-hero" data-nav-bg="dark">
                 <h1 class="navieo-sr">Navieo performance marketing case study</h1>
                 <div class="navieo-hero-inner">
                     <div class="navieo-hero-bottom">
@@ -535,7 +563,7 @@
                 <div class="navieo-wrap">
                     <div class="navieo-split">
                         <div class="navieo-logo-panel reveal">
-                            <img src="https://www.socialsanta.in/images/OrangeN.webp" alt="Navieo logo">
+                            <img src="assets/images/navieo/OrangeN.webp" alt="Navieo logo">
                         </div>
                         <div class="reveal" data-delay="100">
                             <span class="navieo-label">Campaign overview</span>
@@ -611,11 +639,11 @@
                         <div class="navieo-image reveal" data-delay="100"><img src="assets/images/navieo-models.webp"
                                 alt="Navieo media creative 2">
                         </div>
-                        <div class="navieo-image reveal" data-delay="200"><img
-                                src="https://www.socialsanta.in/images/NMockup3.webp" alt="Navieo media creative 3">
+                        <div class="navieo-image reveal" data-delay="200"><img src="assets/images/navieo/NMockup3.webp"
+                                alt="Navieo media creative 3">
                         </div>
-                        <div class="navieo-image reveal" data-delay="300"><img
-                                src="https://www.socialsanta.in/images/NMockup4.webp" alt="Navieo media creative 4">
+                        <div class="navieo-image reveal" data-delay="300"><img src="assets/images/navieo/NMockup4.webp"
+                                alt="Navieo media creative 4">
                         </div>
                     </div>
                 </div>
@@ -702,6 +730,18 @@
         </footer>
     </div>
     <script src="script.js"></script>
+    <script>
+        /* Hero image runs behind the nav: measure the real header height so the hero sits flush at the top */
+        (function () {
+            var h = document.querySelector(".site-header");
+            if (!h) return;
+            function set() { document.documentElement.style.setProperty("--hdr-h", h.offsetHeight + "px"); }
+            set();
+            window.addEventListener("resize", set);
+            window.addEventListener("load", set);
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(set);
+        })();
+    </script>
 </body>
 
 </html>

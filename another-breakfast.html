@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Smoothie Photography Case Study | Social Santa</title>
+    <link rel="icon" type="image/png" href="assets/images/ss-shape.webp">
     <meta name="description"
         content="A five-smoothie product shoot by Social Santa: natural light, bold colour and fresh fruit styling.">
     <link rel="canonical" href="https://socialsanta.in/smoothies.html">
@@ -734,6 +735,33 @@
                 width: 100%;
             }
         }
+
+        /* ==============================
+           HERO IMAGE RUNS BEHIND THE NAV BAR
+        ============================== */
+        body[data-page="smoothies"] .site-header {
+            margin-bottom: calc(-1 * var(--hdr-h, 6rem));
+        }
+
+        body[data-page="smoothies"] .sm-hero {
+            min-height: 100svh;
+            padding-top: 7rem;
+        }
+
+        body[data-page="smoothies"] .sm-hero-inner {
+            min-height: calc(100svh - 11rem);
+        }
+
+        @media (max-width: 768px) {
+            body[data-page="smoothies"] .sm-hero {
+                min-height: 100svh;
+                padding-top: 6.5rem;
+            }
+
+            body[data-page="smoothies"] .sm-hero-inner {
+                min-height: calc(100svh - 10rem);
+            }
+        }
     </style>
 </head>
 
@@ -783,7 +811,7 @@
 
         <main>
             <!-- HERO -->
-            <section class="sm-hero">
+            <section class="sm-hero" data-nav-bg="dark">
                 <h1 class="sm-sr">Smoothie photography case study</h1>
                 <div class="sm-hero-inner">
                     <div class="sm-hero-bottom">
@@ -870,11 +898,11 @@
                         <div class="sm-image reveal"><img src="assets/images/smoothie-blueberry.webp"
                                 alt="Blueberry smoothie with scattered blueberries on yellow cloth" loading="lazy">
                         </div>
-                        <div class="sm-image reveal" data-delay="100"><img src="assets/images/AB-1.jpg"
+                        <div class="sm-image reveal" data-delay="100"><img src="assets/images/AB-1.webp"
                                 alt="Guava smoothie with sliced guavas on yellow cloth" loading="lazy"></div>
-                        <div class="sm-image reveal" data-delay="200"><img src="assets/images/AB-2.jpg"
+                        <div class="sm-image reveal" data-delay="200"><img src="assets/images/AB-2.webp"
                                 alt="Cantaloupe smoothie with cut melon on yellow cloth" loading="lazy"></div>
-                        <div class="sm-image reveal"><img src="assets/images/AB-3.jpg"
+                        <div class="sm-image reveal"><img src="assets/images/AB-3.webp"
                                 alt="Custard apple smoothie with split custard apples on yellow cloth" loading="lazy">
                         </div>
                         <div class="sm-image reveal" data-delay="100"><img src="assets/images/smoothie-avocado.webp"
@@ -918,6 +946,18 @@
         </footer>
     </div>
     <script src="script.js"></script>
+    <script>
+        /* Hero image runs behind the nav: measure the real header height so the hero sits flush at the top */
+        (function () {
+            var h = document.querySelector(".site-header");
+            if (!h) return;
+            function set() { document.documentElement.style.setProperty("--hdr-h", h.offsetHeight + "px"); }
+            set();
+            window.addEventListener("resize", set);
+            window.addEventListener("load", set);
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(set);
+        })();
+    </script>
 </body>
 
 </html>

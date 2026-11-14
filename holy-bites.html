@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>The Holy Bites Production Case Study | Social Santa</title>
+    <link rel="icon" type="image/png" href="assets/images/ss-shape.webp">
     <meta name="description"
         content="How Social Santa built The Holy Bites from scratch: product photoshoots and video content that gave a new makhana snack brand a confident first impression.">
     <link rel="canonical" href="https://socialsanta.in/holybites.html">
@@ -44,7 +45,7 @@
             color: #fff;
             background:
                 linear-gradient(rgba(20, 10, 10, .45), rgba(20, 10, 10, .45)),
-                url("https://www.socialsanta.in/images/hbhero1.jpeg") center center / cover no-repeat;
+                url("assets/images/holybites/hbhero1.webp") center center / cover no-repeat;
         }
 
         .hb-hero-inner {
@@ -363,6 +364,33 @@
                 white-space: normal;
             }
         }
+
+        /* ==============================
+           HERO IMAGE RUNS BEHIND THE NAV BAR
+        ============================== */
+        body[data-page="holybites"] .site-header {
+            margin-bottom: calc(-1 * var(--hdr-h, 6rem));
+        }
+
+        body[data-page="holybites"] .hb-hero {
+            min-height: 100svh;
+            padding-top: 7rem;
+        }
+
+        body[data-page="holybites"] .hb-hero-inner {
+            min-height: calc(100svh - 11rem);
+        }
+
+        @media (max-width: 768px) {
+            body[data-page="holybites"] .hb-hero {
+                min-height: 100svh;
+                padding-top: 6.5rem;
+            }
+
+            body[data-page="holybites"] .hb-hero-inner {
+                min-height: calc(100svh - 10rem);
+            }
+        }
     </style>
 </head>
 
@@ -412,7 +440,7 @@
 
         <main>
             <!-- HERO -->
-            <section class="hb-hero">
+            <section class="hb-hero" data-nav-bg="dark">
                 <h1 class="hb-sr">The Holy Bites production case study</h1>
                 <div class="hb-hero-inner">
                     <div class="hb-hero-bottom">
@@ -455,19 +483,19 @@
                         elevated.</p>
                     <div class="hb-gallery">
                         <div class="hb-image reveal">
-                            <img src="https://www.socialsanta.in/images/HBGallery1.jpg"
+                            <img src="assets/images/holybites/HBGallery1.webp"
                                 alt="The Holy Bites African Peri Peri Makhana product photography">
                         </div>
                         <div class="hb-image reveal" data-delay="100">
-                            <img src="https://www.socialsanta.in/images/HBGallery2.jpg"
+                            <img src="assets/images/holybites/HBGallery2.webp"
                                 alt="The Holy Bites Makhana pouring into a bowl">
                         </div>
                         <div class="hb-image reveal">
-                            <img src="https://www.socialsanta.in/images/HBGallery3.jpg"
+                            <img src="assets/images/holybites/HBGallery3.webp"
                                 alt="The Holy Bites Superfood Snack Mix flatlay">
                         </div>
                         <div class="hb-image reveal" data-delay="100">
-                            <img src="https://www.socialsanta.in/images/HBGallery4.jpg"
+                            <img src="assets/images/holybites/HBGallery4.webp"
                                 alt="The Holy Bites Pure Jaggery Superfood Snack Mix in a bowl">
                         </div>
                     </div>
@@ -479,7 +507,7 @@
                 <div class="hb-wrap">
                     <div class="hb-split">
                         <div class="hb-logo-panel reveal">
-                            <img src="https://www.socialsanta.in/images/HBLogo.png" alt="The Holy Bites logo">
+                            <img src="assets/images/holybites/HBLogo.webp" alt="The Holy Bites logo">
                         </div>
                         <div class="reveal" data-delay="100">
                             <span class="hb-label">The brief</span>
@@ -510,7 +538,7 @@
                         impression. We focused on creating high-quality product photoshoots that made the offerings
                         look fresh, detailed, and irresistible.</p>
                     <div class="hb-image reveal">
-                        <img src="https://www.socialsanta.in/images/HBCluster.png"
+                        <img src="assets/images/holybites/HBCluster.webp"
                             alt="The Holy Bites Protein Popped Makhana product range">
                     </div>
                 </div>
@@ -566,6 +594,18 @@
         </footer>
     </div>
     <script src="script.js"></script>
+    <script>
+        /* Hero image runs behind the nav: measure the real header height so the hero sits flush at the top */
+        (function () {
+            var h = document.querySelector(".site-header");
+            if (!h) return;
+            function set() { document.documentElement.style.setProperty("--hdr-h", h.offsetHeight + "px"); }
+            set();
+            window.addEventListener("resize", set);
+            window.addEventListener("load", set);
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(set);
+        })();
+    </script>
 </body>
 
 </html>

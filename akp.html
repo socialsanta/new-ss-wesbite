@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AKP Ferrocast Branding & Packaging Case Study | Social Santa</title>
+    <link rel="icon" type="image/png" href="assets/images/ss-shape.webp">
     <meta name="description"
         content="How Social Santa built the AKP Ferrocast identity: logo, stationery, workwear and fleet livery for a foundry with four decades of industrial credibility.">
     <link rel="canonical" href="https://socialsanta.in/akp.html">
@@ -44,7 +45,7 @@
             color: #fff;
             background:
                 linear-gradient(rgba(20, 10, 10, .45), rgba(20, 10, 10, .45)),
-                url("https://www.socialsanta.in/images/AKPHero.jpg") center center / cover no-repeat;
+                url("assets/images/akp/AKPHero.webp") center center / cover no-repeat;
         }
 
         .akp-hero-inner {
@@ -363,6 +364,33 @@
                 white-space: normal;
             }
         }
+
+        /* ==============================
+           HERO IMAGE RUNS BEHIND THE NAV BAR
+        ============================== */
+        body[data-page="akp"] .site-header {
+            margin-bottom: calc(-1 * var(--hdr-h, 6rem));
+        }
+
+        body[data-page="akp"] .akp-hero {
+            min-height: 100svh;
+            padding-top: 7rem;
+        }
+
+        body[data-page="akp"] .akp-hero-inner {
+            min-height: calc(100svh - 11rem);
+        }
+
+        @media (max-width: 768px) {
+            body[data-page="akp"] .akp-hero {
+                min-height: 100svh;
+                padding-top: 6.5rem;
+            }
+
+            body[data-page="akp"] .akp-hero-inner {
+                min-height: calc(100svh - 10rem);
+            }
+        }
     </style>
 </head>
 
@@ -412,7 +440,7 @@
 
         <main>
             <!-- HERO -->
-            <section class="akp-hero">
+            <section class="akp-hero" data-nav-bg="dark">
                 <h1 class="akp-sr">AKP Ferrocast branding and packaging case study</h1>
                 <div class="akp-hero-inner">
                     <div class="akp-hero-bottom">
@@ -454,19 +482,19 @@
                         to livery and workwear, every touchpoint carries the same precision as the metal AKP casts.</p>
                     <div class="akp-gallery">
                         <div class="akp-image reveal">
-                            <img src="https://www.socialsanta.in/images/AKPLogoGrid1.jpg"
+                            <img src="assets/images/akp/AKPLogoGrid1.webp"
                                 alt="AKP Ferrocast logo on white, black, navy and reversed backgrounds">
                         </div>
                         <div class="akp-image reveal" data-delay="100">
-                            <img src="https://www.socialsanta.in/images/AKPLogoGrid2.jpg"
+                            <img src="assets/images/akp/AKPLogoGrid2.webp"
                                 alt="AKP Foundries logo on white, black, navy and reversed backgrounds">
                         </div>
                         <div class="akp-image reveal">
-                            <img src="https://www.socialsanta.in/images/AKPStationery.jpg"
+                            <img src="assets/images/akp/AKPStationery.webp"
                                 alt="AKP Ferrocast stationery, business card and fleet livery mockup">
                         </div>
                         <div class="akp-image reveal" data-delay="100">
-                            <img src="https://www.socialsanta.in/images/AKPMerch.jpg"
+                            <img src="assets/images/akp/AKPStationery.webp"
                                 alt="AKP Ferrocast and AKP Foundries workwear and merchandise mockup">
                         </div>
                     </div>
@@ -478,7 +506,7 @@
                 <div class="akp-wrap">
                     <div class="akp-split">
                         <div class="akp-logo-panel reveal">
-                            <img src="https://www.socialsanta.in/images/AKPLogo.png" alt="AKP Ferrocast logo">
+                            <img src="assets/images/akp/AKPLogo.webp" alt="AKP Ferrocast logo">
                         </div>
                         <div class="reveal" data-delay="100">
                             <span class="akp-label">The brief</span>
@@ -508,8 +536,7 @@
                         stationery. We designed a bold, angular mark built on a strict grid, then proved it across every
                         background, material, and surface it would ever need to live on.</p>
                     <div class="akp-image reveal">
-                        <img src="https://www.socialsanta.in/images/AKPFacility.jpg"
-                            alt="AKP Ferrocast manufacturing facility">
+                        <img src="assets/images/akp/AKPFacility.webp" alt="AKP Ferrocast manufacturing facility">
                     </div>
                 </div>
             </section>
@@ -583,6 +610,18 @@
         </footer>
     </div>
     <script src="script.js"></script>
+    <script>
+        /* Hero image runs behind the nav: measure the real header height so the hero sits flush at the top */
+        (function () {
+            var h = document.querySelector(".site-header");
+            if (!h) return;
+            function set() { document.documentElement.style.setProperty("--hdr-h", h.offsetHeight + "px"); }
+            set();
+            window.addEventListener("resize", set);
+            window.addEventListener("load", set);
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(set);
+        })();
+    </script>
 </body>
 
 </html>

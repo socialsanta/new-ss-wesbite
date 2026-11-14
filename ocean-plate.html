@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ocean Plate Brand Identity Case Study | Social Santa</title>
+  <link rel="icon" type="image/png" href="assets/images/ss-shape.webp">
   <meta name="description"
     content="Explore how Social Santa shaped Ocean Plate's coastal-inspired brand identity through logo design, bilingual typography, colour direction and brand applications." />
   <link rel="canonical" href="https://socialsanta.in/ocean-plate.html" />
@@ -1001,6 +1002,36 @@
         margin-left: 0;
       }
     }
+
+    /* ==============================
+   HERO IMAGE RUNS BEHIND THE NAV BAR
+============================== */
+
+    body[data-page="ocean-plate"] .site-header {
+      margin-bottom: calc(-1 * var(--hdr-h, 6rem));
+      /* pull hero up by the header's real height */
+    }
+
+    body[data-page="ocean-plate"] .ocean-hero {
+      min-height: 100svh;
+      padding-top: 7rem;
+      /* keeps hero content clear of the nav */
+    }
+
+    body[data-page="ocean-plate"] .ocean-hero-inner {
+      min-height: calc(100svh - 11rem);
+    }
+
+    @media (max-width: 768px) {
+      body[data-page="ocean-plate"] .ocean-hero {
+        min-height: 100svh;
+        padding-top: 6.5rem;
+      }
+
+      body[data-page="ocean-plate"] .ocean-hero-inner {
+        min-height: calc(100svh - 10rem);
+      }
+    }
   </style>
 </head>
 
@@ -1062,7 +1093,7 @@
                     aria-current="page">Ocean Plate</span>
             </nav> -->
 
-      <section class="op-hero ocean-hero">
+      <section class="op-hero ocean-hero" data-nav-bg="dark">
         <div class="ocean-hero-inner">
           <div class="ocean-hero-bottom">
             <div class="ocean-hero-details">
@@ -1164,12 +1195,12 @@
 
 
           <article class="op-application two reveal" data-delay="100">
-            <img src="assets/images/ocean1.jpeg" alt="Ocean Plate brand identity application"
+            <img src="assets/images/ocean1.webp" alt="Ocean Plate brand identity application"
               class="op-application-image" />
           </article>
 
           <article class="op-application two reveal" data-delay="100">
-            <img src="assets/images/ocean2.jpeg" alt="Ocean Plate brand identity application"
+            <img src="assets/images/ocean2.webp" alt="Ocean Plate brand identity application"
               class="op-application-image" />
           </article>
 
@@ -1309,6 +1340,18 @@
     </footer>
   </div>
   <script src="script.js"></script>
+  <script>
+    /* Ocean Plate: measure the real header height so the hero image always sits flush behind the nav */
+    (function () {
+      var h = document.querySelector(".site-header");
+      if (!h) return;
+      function set() { document.documentElement.style.setProperty("--hdr-h", h.offsetHeight + "px"); }
+      set();
+      window.addEventListener("resize", set);
+      window.addEventListener("load", set);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(set);
+    })();
+  </script>
 </body>
 
 </html>

@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AMD Brand Identity Case Study | Social Santa</title>
+    <link rel="icon" type="image/png" href="assets/images/ss-shape.webp">
     <meta name="description"
         content="How Social Santa built Assal Mawala Darbar from scratch: logo, colour palette, typography, packaging, stationery and menu design rooted in Kolhapur's Maratha heritage.">
     <link rel="canonical" href="https://socialsanta.in/amd.html">
@@ -51,7 +52,7 @@
             color: #fff;
             background:
                 linear-gradient(rgba(20, 10, 10, .45), rgba(20, 10, 10, .45)),
-                url("https://www.socialsanta.in/images/ABG.webp") center center / cover no-repeat;
+                url("assets/images/amd/ABG.webp") center center / cover no-repeat;
         }
 
         .amd-hero-inner {
@@ -675,6 +676,33 @@
                 white-space: normal;
             }
         }
+
+        /* ==============================
+           HERO IMAGE RUNS BEHIND THE NAV BAR
+        ============================== */
+        body[data-page="amd"] .site-header {
+            margin-bottom: calc(-1 * var(--hdr-h, 6rem));
+        }
+
+        body[data-page="amd"] .amd-hero {
+            min-height: 100svh;
+            padding-top: 7rem;
+        }
+
+        body[data-page="amd"] .amd-hero-inner {
+            min-height: calc(100svh - 11rem);
+        }
+
+        @media (max-width: 768px) {
+            body[data-page="amd"] .amd-hero {
+                min-height: 100svh;
+                padding-top: 6.5rem;
+            }
+
+            body[data-page="amd"] .amd-hero-inner {
+                min-height: calc(100svh - 10rem);
+            }
+        }
     </style>
 </head>
 
@@ -724,7 +752,7 @@
 
         <main>
             <!-- HERO -->
-            <section class="amd-hero">
+            <section class="amd-hero" data-nav-bg="dark">
                 <h1 class="amd-sr">Assal Mawala Darbar (AMD) brand identity case study</h1>
                 <div class="amd-hero-inner">
                     <div class="amd-hero-bottom">
@@ -765,7 +793,7 @@
                         <span class="amd-line"></span>
                     </div>
                     <div class="amd-image reveal">
-                        <img src="https://www.socialsanta.in/images/amd.webp" alt="AMD packaging design">
+                        <img src="assets/images/amd/amd.webp" alt="AMD packaging design">
                     </div>
                     <div class="amd-image reveal">
                         <img src="assets/images/amd-packing.webp" alt="AMD packaging design">
@@ -781,7 +809,7 @@
                         <span class="amd-line"></span>
                     </div>
                     <div class="amd-image reveal">
-                        <img src="https://www.socialsanta.in/images/ATemplates.webp" alt="AMD stationery templates">
+                        <img src="assets/images/amd/ATemplates.webp" alt="AMD stationery templates">
                     </div>
                 </div>
             </section>
@@ -794,8 +822,7 @@
                         <span class="amd-line"></span>
                     </div>
                     <div class="amd-image reveal">
-                        <img src="https://www.socialsanta.in/images/AMD%20Menu%20Mockup%2001.webp"
-                            alt="AMD menu design mockup">
+                        <img src="assets/images/amd/AMD Menu Mockup 01.webp" alt="AMD menu design mockup">
                     </div>
                 </div>
             </section>
@@ -870,7 +897,7 @@
 
                     <div class="amd-palette reveal">
                         <div class="amd-palette-visual">
-                            <img src="https://www.socialsanta.in/images/AColorP.webp" alt="AMD brand colour palette">
+                            <img src="assets/images/amd/AColorP.webp" alt="AMD brand colour palette">
                         </div>
                         <div class="amd-palette-copy">
                             <h3>A palette rooted in heritage</h3>
@@ -925,6 +952,18 @@
         </footer>
     </div>
     <script src="script.js"></script>
+    <script>
+        /* Hero image runs behind the nav: measure the real header height so the hero sits flush at the top */
+        (function () {
+            var h = document.querySelector(".site-header");
+            if (!h) return;
+            function set() { document.documentElement.style.setProperty("--hdr-h", h.offsetHeight + "px"); }
+            set();
+            window.addEventListener("resize", set);
+            window.addEventListener("load", set);
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(set);
+        })();
+    </script>
 </body>
 
 </html>

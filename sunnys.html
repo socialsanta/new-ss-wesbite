@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sunny's In A Bottle Production Case Study | Social Santa</title>
+    <link rel="icon" type="image/png" href="assets/images/ss-shape.webp">
     <meta name="description"
         content="How Social Santa shot Sunny's In A Bottle: product photography that took a restaurant favourite from the dining table to the retail shelf.">
     <link rel="canonical" href="https://socialsanta.in/sunny.html">
@@ -44,7 +45,7 @@
             color: #fff;
             background:
                 linear-gradient(rgba(20, 10, 10, .45), rgba(20, 10, 10, .45)),
-                url("https://www.socialsanta.in/images/SunnyHero.jpg") center center / cover no-repeat;
+                url("assets/images/sunnys/SunnyHero.webp") center center / cover no-repeat;
         }
 
         .sunny-hero-inner {
@@ -363,6 +364,33 @@
                 white-space: normal;
             }
         }
+
+        /* ==============================
+           HERO IMAGE RUNS BEHIND THE NAV BAR
+        ============================== */
+        body[data-page="sunny"] .site-header {
+            margin-bottom: calc(-1 * var(--hdr-h, 6rem));
+        }
+
+        body[data-page="sunny"] .sunny-hero {
+            min-height: 100svh;
+            padding-top: 7rem;
+        }
+
+        body[data-page="sunny"] .sunny-hero-inner {
+            min-height: calc(100svh - 11rem);
+        }
+
+        @media (max-width: 768px) {
+            body[data-page="sunny"] .sunny-hero {
+                min-height: 100svh;
+                padding-top: 6.5rem;
+            }
+
+            body[data-page="sunny"] .sunny-hero-inner {
+                min-height: calc(100svh - 10rem);
+            }
+        }
     </style>
 </head>
 
@@ -412,7 +440,7 @@
 
         <main>
             <!-- HERO -->
-            <section class="sunny-hero">
+            <section class="sunny-hero" data-nav-bg="dark">
                 <h1 class="sunny-sr">Sunny&rsquo;s In A Bottle production case study</h1>
                 <div class="sunny-hero-inner">
                     <div class="sunny-hero-bottom">
@@ -456,19 +484,19 @@
                         ready for retail.</p>
                     <div class="sunny-gallery">
                         <div class="sunny-image reveal">
-                            <img src="https://www.socialsanta.in/images/SunnyGallery1.jpg"
+                            <img src="assets/images/sunnys/SunnyGallery1.webp"
                                 alt="Sunny's In A Bottle Greek dressing on an outdoor dining table with grilled chicken and wine">
                         </div>
                         <div class="sunny-image reveal" data-delay="100">
-                            <img src="https://www.socialsanta.in/images/SunnyGallery2.jpg"
+                            <img src="assets/images/sunnys/SunnyGallery2.webp"
                                 alt="Sunny's In A Bottle Greek dressing with garden salad at dusk">
                         </div>
                         <div class="sunny-image reveal">
-                            <img src="https://www.socialsanta.in/images/SunnyGallery3.jpg"
+                            <img src="assets/images/sunnys/SunnyGallery3.webp"
                                 alt="Sunny's In A Bottle Balsamic Vinaigrette, French Vinaigrette and Greek dressing flatlay">
                         </div>
                         <div class="sunny-image reveal" data-delay="100">
-                            <img src="https://www.socialsanta.in/images/SunnyGallery4.jpg"
+                            <img src="assets/images/sunnys/SunnyGallery4.webp"
                                 alt="Sunny's In A Bottle Country Style BBQ Sauce with chicken wings and fries">
                         </div>
                     </div>
@@ -480,7 +508,7 @@
                 <div class="sunny-wrap">
                     <div class="sunny-split">
                         <div class="sunny-logo-panel reveal">
-                            <img src="https://www.socialsanta.in/images/SunnyLabel.jpg"
+                            <img src="assets/images/sunnys/SunnyLabel.webp"
                                 alt="Sunny's In A Bottle Greek salad dressing label">
                         </div>
                         <div class="reveal" data-delay="100">
@@ -566,6 +594,18 @@
         </footer>
     </div>
     <script src="script.js"></script>
+    <script>
+        /* Hero image runs behind the nav: measure the real header height so the hero sits flush at the top */
+        (function () {
+            var h = document.querySelector(".site-header");
+            if (!h) return;
+            function set() { document.documentElement.style.setProperty("--hdr-h", h.offsetHeight + "px"); }
+            set();
+            window.addEventListener("resize", set);
+            window.addEventListener("load", set);
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(set);
+        })();
+    </script>
 </body>
 
 </html>

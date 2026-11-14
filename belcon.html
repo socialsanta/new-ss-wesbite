@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CREDAI Belcon Expo 2026 Event Marketing Case Study | Social Santa</title>
+    <link rel="icon" type="image/png" href="assets/images/ss-shape.webp">
     <meta name="description"
         content="How Social Santa handled the complete 360° event marketing for CREDAI Belcon Expo 2026, online and offline, from strategy to execution.">
     <link rel="canonical" href="https://socialsanta.in/belcon.html">
@@ -461,6 +462,33 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* ==============================
+           HERO IMAGE RUNS BEHIND THE NAV BAR
+        ============================== */
+        body[data-page="belcon"] .site-header {
+            margin-bottom: calc(-1 * var(--hdr-h, 6rem));
+        }
+
+        body[data-page="belcon"] .belcon-hero {
+            min-height: 100svh;
+            padding-top: 7rem;
+        }
+
+        body[data-page="belcon"] .belcon-hero-inner {
+            min-height: calc(100svh - 11rem);
+        }
+
+        @media (max-width: 768px) {
+            body[data-page="belcon"] .belcon-hero {
+                min-height: 100svh;
+                padding-top: 6.5rem;
+            }
+
+            body[data-page="belcon"] .belcon-hero-inner {
+                min-height: calc(100svh - 10rem);
+            }
+        }
     </style>
 </head>
 
@@ -510,7 +538,7 @@
 
         <main>
             <!-- HERO -->
-            <section class="belcon-hero">
+            <section class="belcon-hero" data-nav-bg="dark">
                 <h1 class="belcon-sr">CREDAI Belcon Expo 2026 event marketing case study</h1>
                 <div class="belcon-hero-inner">
                     <div class="belcon-hero-bottom">
@@ -699,6 +727,18 @@
     </footer>
     </div>
     <script src="script.js"></script>
+    <script>
+        /* Hero image runs behind the nav: measure the real header height so the hero sits flush at the top */
+        (function () {
+            var h = document.querySelector(".site-header");
+            if (!h) return;
+            function set() { document.documentElement.style.setProperty("--hdr-h", h.offsetHeight + "px"); }
+            set();
+            window.addEventListener("resize", set);
+            window.addEventListener("load", set);
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(set);
+        })();
+    </script>
 </body>
 
 </html>
