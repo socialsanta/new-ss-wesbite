@@ -113,9 +113,9 @@
     { name: "Annostav", cat: "Offline Marketing", line: "Digital growth, channel by channel.", href: "annovstav.html" ,image: "assets/images/annovstav-hero.webp "},
     { name: "Creamaai", cat: "Online Marketing", line: "Scroll-stopping campaigns for a sweet brand.", href: "creamaai.html" ,image: "assets/images/creamaai-hero.webp "},
     { name: "Yali Rudraksha", cat: "Branding", line: "Provenance over certification.", href: "yali-rudraksha.html" ,image: "assets/images/ylogo.webp "},
-    { name: "Belcon", cat: ["Online Marketing", "Offline Marketing"], line: "A retail growth narrative built for the boardroom.", href: "belcon.html", image: "assets/images/belcon.webp "},
+    // { name: "Belcon", cat: ["Online Marketing", "Offline Marketing"], line: "A retail growth narrative built for the boardroom.", href: "belcon.html", image: "assets/images/belcon.webp "},
     { name: "Niyaaz", cat: "Performance", line: "Filling tables with ads tuned for footfall." , href: "niyaaz.html" ,image: "assets/images/biryani.jpeg"},
-    { name: "The Holy Bites", cat: "Production", line: "Food films that make you hungry." , href: "holy-bites.html" ,image: "assets/images/hb1.webp "},
+    { name: "The Holy Bites", cat: "Production", line: "Food films that make you hungry." , href: "holy-bites.html" ,image: "assets/images/holybites/hb2.webp "},
     { name: "AKP Ferrocast", cat: "Branding", line: "Repositioning a 1978 iron-casting OEM for global buyers." , href: "akp.html" ,image: "assets/images/akp-hero.webp "},
     { name: "Sunny's In A Bottle", cat: "Production", line: "Bottled sunshine, shot in-house." , href: "sunnys.html"  ,image: "assets/images/suunys-hero.webp "},
     { name: "Another breakfast", cat: "Production", line: "Bottled sunshine, shot in-house." , href: "another-breakfast.html" ,image: "assets/images/smoothie-blueberry.webp "}
